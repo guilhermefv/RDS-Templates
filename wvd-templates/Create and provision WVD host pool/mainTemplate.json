@@ -296,7 +296,7 @@
                         "value": "[variables('subnet-id')]"
                     },
                     "dnsServer": {
-                        "value": "[parameters('dnsServer')]"
+                        "value": "[variables('dnsServer')]"
                     },
                     "vhds": {
                         "value": "[variables('vhds')]"
