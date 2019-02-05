@@ -7,7 +7,7 @@
             "metadata": {
                 "description": "The base URI where artifacts required by this template are located."
             },
-            "defaultValue": "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool"
+            "defaultValue": "https://raw.githubusercontent.com/guilhermefv/RDS-Templates/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool"
         },
         "_artifactsLocationSasToken": {
             "type": "securestring",
@@ -140,6 +140,12 @@
             "type": "string",
             "metadata": {
                 "description": "The resource group containing the existing virtual network."
+            }
+        },
+        "customDns": {
+            "type": "string",
+            "metadata": {
+                "description": "Custom Dns Server."
             }
         },
         "rdBrokerURL": {
@@ -276,6 +282,9 @@
                     },
                     "subnet-id": {
                         "value": "[variables('subnet-id')]"
+                    },
+                    "customDns": {
+                        "value": "[parameters('customDns')]"
                     },
                     "vhds": {
                         "value": "[variables('vhds')]"
