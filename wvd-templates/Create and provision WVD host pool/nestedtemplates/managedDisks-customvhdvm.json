@@ -75,6 +75,12 @@
                 "description": "The unique id of the subnet for the nics."
             }
         },
+        "customDns": {
+            "type": "string",
+            "metadata": {
+                "description": "Custom Dns Server."
+            }
+        },
         "rdshImageSourceResourceGroup": {
             "type": "string",
             "defaultValue": "",
@@ -131,7 +137,12 @@
                             }
                         }
                     }
-                ]
+                ],
+                "dnsSettings": {
+                    "dnsServers": [
+                        "[parameters('customDns')]"
+                    ]
+                }
             }
         },
         {
