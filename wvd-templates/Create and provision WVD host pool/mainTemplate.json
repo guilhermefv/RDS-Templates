@@ -142,6 +142,17 @@
                 "description": "The resource group containing the existing virtual network."
             }
         },
+        "dnsServerType": {
+            "type": "string",
+            "allowedValues": [
+                "Custom",
+                "Provided"
+            ],
+            "metadata": {
+                "description": "Type of dns server to be used in NIC."
+            },
+            "defaultValue": "Provided"
+        },
         "customDns": {
             "type": "string",
             "metadata": {
@@ -222,6 +233,7 @@
         "existingDomainUsername": "[first(split(parameters('existingDomainUPN'), '@'))]",
         "vhds": "[concat('vhds','/', variables('rdshPrefix'))]",
         "subnet-id": "[concat(resourceId(parameters('virtualNetworkResourceGroupName'),'Microsoft.Network/virtualNetworks',parameters('existingVnetName')),'/subnets/',parameters('existingSubnetName'))]",
+        "dnsServer": "[if(equals(parameters('dnsServerType'), 'Custom'), parameters('customDns'), 'AzureProvidedDNS')]",
         "hostPoolFriendlyName": "Hostpool",
         "hostPoolDescription": "Created through ARM template",
         "registrationExpirationHours": "48",
@@ -283,8 +295,8 @@
                     "subnet-id": {
                         "value": "[variables('subnet-id')]"
                     },
-                    "customDns": {
-                        "value": "[parameters('customDns')]"
+                    "dnsServer": {
+                        "value": "[parameters('dnsServer')]"
                     },
                     "vhds": {
                         "value": "[variables('vhds')]"

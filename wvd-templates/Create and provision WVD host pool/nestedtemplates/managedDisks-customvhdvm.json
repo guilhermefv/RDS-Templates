@@ -75,11 +75,12 @@
                 "description": "The unique id of the subnet for the nics."
             }
         },
-        "customDns": {
+        "dnsServer": {
             "type": "string",
             "metadata": {
-                "description": "Custom Dns Server."
-            }
+                "description": "Dns Server."
+            },
+            "defaultValue": "AzureProvidedDNS"
         },
         "rdshImageSourceResourceGroup": {
             "type": "string",
@@ -140,7 +141,7 @@
                 ],
                 "dnsSettings": {
                     "dnsServers": [
-                        "[parameters('customDns')]"
+                        "[parameters('dnsServer')]"
                     ]
                 }
             }
